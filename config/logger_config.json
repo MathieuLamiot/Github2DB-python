@@ -1,0 +1,31 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "standard": {
+            "format": "%(asctime)s [%(levelname)s] %(name)s:%(lineno)d: %(message)s"
+        }
+    },
+    "handlers": {
+        "timedRotatingFile_handler": {
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "formatter": "standard",
+            "when": "midnight",
+            "backupCount": 1,
+            "filename": "./logs/log.log"
+        },
+        "file_handler": {
+            "class": "logging.FileHandler",
+            "filename": "./logs/log.log",
+            "formatter": "standard"
+        }
+    },
+    "loggers": {
+        "": {
+            "handlers": [
+                "timedRotatingFile_handler"
+            ],
+            "level": "DEBUG"
+        }
+    }
+}

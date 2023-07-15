@@ -1,0 +1,5 @@
+pytest==7.1.2
+flake8==4.0.1
+setuptools==65.5.0
+pylint>=2.17.2
+gql[all]>=3

@@ -1,0 +1,5 @@
+[flake8]
+exclude = .github,.pytest_cache,.venv
+max-complexity = 10
+count = true
+max-line-length=127
