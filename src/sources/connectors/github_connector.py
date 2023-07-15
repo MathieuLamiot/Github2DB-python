@@ -1,9 +1,15 @@
+import json
+
+from pathlib import Path
 from gql import Client
 from gql.transport.requests import RequestsHTTPTransport
 
 from sources.flows.projects_from_organization_github_flow import ProjectsFromOrganizationGithubFlow
 from sources.flows.project_items_from_project_github_flow import ProjectItemsFromProject
 from sources.flows.project_item_update_flow import ProjectItemUpdate
+
+
+  
 
 
 class GithubConnector():
@@ -14,8 +20,10 @@ class GithubConnector():
     def __init__(self):
         # GitHub API endpoint
         url = 'https://api.github.com/graphql'
-        # Your GitHub access token
-        access_token = 'xxx'
+        # Your GitHub access token from JSON file
+        file = open(Path(__file__).parent.parent.parent.parent / "config" / "tokens.json", encoding='utf-8')
+        data = json.load(file)
+        access_token = data["github_token"]
         # Set up the HTTP transport and add authentication header
         transport = RequestsHTTPTransport(
             url=url, headers={'Authorization': f'Bearer {access_token}'})
